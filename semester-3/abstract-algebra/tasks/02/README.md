@@ -36,16 +36,11 @@ entre el inmediatamente anterior
 <img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{n-1}}#gh-dark-mode-only">
 .
 
-* <img src="https://render.githubusercontent.com/render/math?math={F_{2}/F_{1}=1/1=1}#gh-light-mode-only">
-<img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{2}/F_{1}=1/1=1}#gh-dark-mode-only">
-* <img src="https://render.githubusercontent.com/render/math?math={F_{3}/F_{2}=2/1=2}#gh-light-mode-only">
-<img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{3}/F_{2}=2/1=2}#gh-dark-mode-only">
-* <img src="https://render.githubusercontent.com/render/math?math={F_{4}/F_{3}=3/2=1.5}#gh-light-mode-only">
-<img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{4}/F_{3}=3/2=1.5}#gh-dark-mode-only">
-* <img src="https://render.githubusercontent.com/render/math?math={F_{5}/F_{4}=5/3{\simeq}1.67}#gh-light-mode-only">
-<img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{5}/F_{4}=5/3{\simeq}1.67}#gh-dark-mode-only">
-* <img src="https://render.githubusercontent.com/render/math?math={F_{6}/F_{5}=8/5=1.6}#gh-light-mode-only">
-<img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{6}/F_{5}=8/5=1.6}#gh-dark-mode-only">
+* <img src="https://render.githubusercontent.com/render/math?math={F_{2}/F_{1}=1/1=1}#gh-light-mode-only"><img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{2}/F_{1}=1/1=1}#gh-dark-mode-only">
+* <img src="https://render.githubusercontent.com/render/math?math={F_{3}/F_{2}=2/1=2}#gh-light-mode-only"><img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{3}/F_{2}=2/1=2}#gh-dark-mode-only">
+* <img src="https://render.githubusercontent.com/render/math?math={F_{4}/F_{3}=3/2=1.5}#gh-light-mode-only"><img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{4}/F_{3}=3/2=1.5}#gh-dark-mode-only">
+* <img src="https://render.githubusercontent.com/render/math?math={F_{5}/F_{4}=5/3{\simeq}1.67}#gh-light-mode-only"><img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{5}/F_{4}=5/3{\simeq}1.67}#gh-dark-mode-only">
+* <img src="https://render.githubusercontent.com/render/math?math={F_{6}/F_{5}=8/5=1.6}#gh-light-mode-only"><img src="https://render.githubusercontent.com/render/math?math={\color{white}F_{6}/F_{5}=8/5=1.6}#gh-dark-mode-only">
 
 El resultado oscila al rededor de un valor—el número áureo. Es decir
 
