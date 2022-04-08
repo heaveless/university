@@ -1,12 +1,12 @@
 # Extended Euclid's Algorithm
 
-** :fire: execution :fire: **
+**:fire: execution :fire:**
 
 ```bash
 python main.py
 ```
 
-** :memo: result :memo: **
+**:memo: result :memo:**
 
 ```bash
 +----------------------------+
