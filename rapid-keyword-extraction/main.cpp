@@ -77,9 +77,13 @@ int main()
   const char spliter[] = " .";
   char originalText[] = "feature extraction is not that complex. there are many algorithms available that can help you with feature extraction. rapid automatic keyword extraction is one of those.";
 
+  std::cout << "Texto Original:\n" << originalText << std::endl;
+
   char keyPhrases[totalSize];
 
   char* text = split(originalText, spliter);
+
+  std::cout << "\nCandidate Key Phrases" << std::endl;
 
   int activeChange = 0;
   while (text != NULL)
