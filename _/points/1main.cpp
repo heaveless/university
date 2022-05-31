@@ -6,23 +6,27 @@ class Operator {
     Operator() {}
 
     int sum(int a, int b) {
-      printf("%s(%i,%i): ", __func__, a, b);
+      this->print(__func__, a, b); 
       return a + b; 
     }
     
     int subtraction(int a, int b) { 
-      printf("%s(%i,%i): ", __func__, a, b);
+      this->print(__func__, a, b); 
       return a - b; 
     }
     
     int multiplication(int a, int b) { 
-      printf("%s(%i,%i): ", __func__, a, b);
+      this->print(__func__, a, b); 
       return a * b; 
     }
     
     int division(int a, int b) { 
-      printf("%s(%i,%i): ", __func__, a, b);
+      this->print(__func__, a, b); 
       return a / b; 
+    }
+
+    void print(const char* str, int a, int b) { 
+      printf("%s(%i,%i): ", str, a, b); 
     }
 };
 
