@@ -1,3 +1,4 @@
+const RANDOMINTEGER = require('./RANDOMINTEGER');
 const ES_COMPUSTO = require('./ES_COMPUESTO');
 
 module.exports = (n, s) => {
@@ -8,7 +9,7 @@ module.exports = (n, s) => {
     t = t + 1;
 
     for (let j = 1; j < s; j++) {
-      const a = Math.Random(2, n - 1);
+      const a = RANDOMINTEGER(2, n - 1);
       if (ES_COMPUSTO(a, n, t, u))
         return false;
     }
