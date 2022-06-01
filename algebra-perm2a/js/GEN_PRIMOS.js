@@ -1,7 +1,7 @@
-import MILLER_RABIN from './MILLER_RABIN';
+const MILLER_RABIN = require('./MILLER_RABIN');
 
-export default n => {
-  let n = 0;
+module.exports = n => {
+  let s = 0;
   n = n + 1 - (n % 2);
 
   while (!MILLER_RABIN(n, s))

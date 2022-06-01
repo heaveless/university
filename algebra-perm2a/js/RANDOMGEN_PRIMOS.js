@@ -1,7 +1,8 @@
-import RANDOMBITS from './RANDOMBITS';
-import MILLER_RABIN from './MILLER_RABIN';
+const RANDOMBITS = require('./RANDOMBITS');
+const MILLER_RABIN = require('./MILLER_RABIN');
 
-export default b => {
+module.exports = b => {
+  let s = 0;
   let n = RANDOMBITS(b);
 
   while (!MILLER_RABIN(n, s))
