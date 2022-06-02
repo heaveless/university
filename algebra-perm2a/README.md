@@ -1,4 +1,4 @@
-# Algebra Abstracta perm2a
+# algebra-perm2a
 
 **All prime numbers [3, 4, 5]length**
 
