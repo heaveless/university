@@ -1,5 +1,9 @@
-#include "RANDOMINTEGER.cpp"
 #include "ES_COMPUESTO.cpp"
+
+#ifndef RANDOMINTEGER_F_
+#include "RANDOMINTEGER.cpp"
+#define RANDOMINTEGER_F_
+#endif
 
 bool MILLER_RABIN(int n, int s) {
   int t = 0;

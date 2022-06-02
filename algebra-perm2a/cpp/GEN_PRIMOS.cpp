@@ -1,4 +1,7 @@
+#ifndef MILLER_RABIN_F_
 #include "MILLER_RABIN.cpp"
+#define MILLER_RABIN_F_
+#endif
 
 int GEN_PRIMOS(int n) {
   int s = 0;
