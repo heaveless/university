@@ -9,7 +9,7 @@ Homework, exercises and more
   - [Installation]()
 - [Abstract Algebra]()
   - [Permanent 1a]()
-  - [Permanent 1b](algebra-perm1b)
+  - [Permanent 1b](./algebra-perm1b)
   - [Permanent 1c](algebra-perm1c)
   - [Permanent 2a](algebra-perm2a)
   - [Extra]()
