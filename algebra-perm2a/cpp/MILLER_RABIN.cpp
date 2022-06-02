@@ -10,7 +10,7 @@ bool MILLER_RABIN(int n, int s) {
 
     for (int j = 1; j < s; j++) {
       const int a = RANDOMINTEGER(2, n - 1);
-      if (ES_COMPUSTO(a, n, t, u))
+      if (ES_COMPUESTO(a, n, t, u))
         return false;
     }
   }
