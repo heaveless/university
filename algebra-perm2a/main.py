@@ -2,6 +2,8 @@ from py.GEN_PRIMOS import GEN_PRIMOS
 from py.RANDOMGEN_PRIMOS import RANDOMGEN_PRIMOS
 
 def allPrimeNumber():
+    print("\n{0}:\n".format(allPrimeNumber.__name__))
+    
     listaNum = [3,4,5]
     for i in listaNum:
         print(f"\nNumeros primos de {i} digitos:")
