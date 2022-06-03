@@ -39,7 +39,7 @@ python main.py
 
 any content here
 
-```c++
+```py
 def allPrimeNumber():
     listaNum = [3,4,5]
     for i in listaNum:
