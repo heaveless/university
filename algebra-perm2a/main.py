@@ -6,14 +6,14 @@ def allPrimeNumber():
 
 def randomPrimeNumber():
     source = [ 
-        16, 16, 16,
-        32, 32, 32,
-        64, 64, 64, 64
+        16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
+        32, 32, 32, 32, 32, 32, 32, 32, 32, 32,
+        64, 64, 64, 64, 64, 64, 64, 64, 64, 64
     ]
 
     for i in source:
         prime = RANDOMGEN_PRIMOS(i)
-        print(prime)
+        print("{0}bits -> {1}".format(i, prime))
 
 def main():
     allPrimeNumber()
