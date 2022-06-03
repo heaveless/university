@@ -11,6 +11,8 @@
 
 **Table of Contents**
 
+- [Empezemos]()
+  - [Ejecucion](#ejecución)
 - [Ejercicios]()
   - [Generar todo los primos de 3,4 y 5 cifras](#ejercicio-1)
   - [Numeros primos aleatorios de 16,32 y 64 bits](#ejercicio-2)
@@ -25,6 +27,13 @@
 
 <br>
 
+### Ejecución
+
+Para ejecutar el programa, porfavor correr el siguente script en la terminal.
+
+```bash
+python main.py
+```
 ### Ejercicio 1
 *Generar todos los primos de 3, 4 y 5 cifras.*
 
