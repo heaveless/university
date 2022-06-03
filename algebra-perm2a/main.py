@@ -1,4 +1,4 @@
-# from py.GEN_PRIMOS import GEN_PRIMOS
+from py.GEN_PRIMOS import GEN_PRIMOS
 from py.RANDOMGEN_PRIMOS import RANDOMGEN_PRIMOS
 
 def allPrimeNumber():
