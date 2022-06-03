@@ -1,4 +1,4 @@
-from MILLER_RABIN import MILLER_RABIN
+from py.MILLER_RABIN import MILLER_RABIN
 
 def GEN_PRIMOS(n):
     s = 0

@@ -1,5 +1,5 @@
-from RANDOMBITS import RANDOMBITS
-from MILLER_RABIN import MILLER_RABIN
+from py.RANDOMBITS import RANDOMBITS
+from py.MILLER_RABIN import MILLER_RABIN
 
 def RANDOMGEN_PRIMOS(b):
     s = 0

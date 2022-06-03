@@ -1,5 +1,5 @@
 import math
-from RANDOMINTEGER import RANDOMINTEGER
+from py.RANDOMINTEGER import RANDOMINTEGER
 
 def RANDOMBITS(b):
     max = pow(2, b) - 1

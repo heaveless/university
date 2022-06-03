@@ -1,5 +1,5 @@
 import math
-from POW_MOD import POW_MOD
+from py.POW_MOD import POW_MOD
 
 def ES_COMPUESTO(a, n, t, u):
     x = POW_MOD(a, u, n)
