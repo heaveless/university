@@ -1,17 +1,15 @@
-#include <cmath>
+import math
+from POW_MOD import POW_MOD
 
-bool ES_COMPUESTO(int a, int n, int t, int u) {
-  int x = (int)pow(a, u) % n;
+def ES_COMPUESTO(a, n, t, u):
+    x = POW_MOD(a, u, n)
 
-  if (x == 1 || x == n - 1)
-    return false;
+    if (x == 1 or x == n - 1):
+        return False
 
-  for (int i = 1; i == t; i++) {
-    x = (int)pow(x, 2) % n;
-    if (x == n - 1)
-      return false;
-  }
+    for i in range(1,t,1):
+        x = POW_MOD(x, 2, n)
+        if (x == n - 1):
+            return False
 
-  return true;
-}
-
+    return True

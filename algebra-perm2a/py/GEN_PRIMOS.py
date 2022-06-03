@@ -1,14 +1,10 @@
-#ifndef MILLER_RABIN_F_
-#include "MILLER_RABIN.cpp"
-#define MILLER_RABIN_F_
-#endif
+from MILLER_RABIN import MILLER_RABIN
 
-int GEN_PRIMOS(int n) {
-  int s = 0;
-  n = n + 1 - (n % 2);
+def GEN_PRIMOS(n):
+    s = 0
+    n = n + 1 - (n % 2)
 
-  while (!MILLER_RABIN(n, s))
-    n += 2;
+    while (not MILLER_RABIN(n, s)):
+        n += 2
 
-  return n;
-}
+    return n

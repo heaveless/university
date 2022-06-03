@@ -1,13 +1,6 @@
-#include <time.h>
+import random
 
-#ifndef STDINT_LIB_
-#include <stdint.h>
-#define STDINT_LIB_
-#endif
+def RANDOMINTEGER(min: int, max: int) -> int:
+    return random.randint(min, max)
 
-int64_t RANDOMINTEGER(int64_t min, int64_t max) {
-  srand(time(0));
-  const int64_t positive = 1;
-  return rand() % (max - min + positive) + min;
-}
 
