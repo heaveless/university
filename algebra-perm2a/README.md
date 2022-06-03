@@ -40,17 +40,16 @@ python main.py
 any content here
 
 ```c++
-void allPrimeNumber() {
-  std::cout << __func__ << std::endl;
-
-  int source[] = { 3, 4, 5 };
-  int length = sizeof(source) / sizeof(*source);
-
-  for (int* i = source; i < source + length; i++) {
-    int prime = GEN_PRIMOS(*i);
-    std::cout << prime << std::endl;
-  }
-}
+def allPrimeNumber():
+    listaNum = [3,4,5]
+    for i in listaNum:
+        print(f"\nNumeros primos de {i} digitos:")
+        numero = (10**(i-1))
+        while(numero <= (10**i)):
+            if MILLER_RABIN(numero,50):
+                print(numero,end="--")
+            numero += 1
+    print("\n")
 ```
 ### Ejercicio 2
 *Implementar un programa que genere de manera aleatoria al menos 10 primos distintos de 16, 32 y 64 bits.*
