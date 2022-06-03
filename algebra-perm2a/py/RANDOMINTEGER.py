@@ -1,6 +1,6 @@
 import random
 
-def RANDOMINTEGER(min: int, max: int) -> int:
+def RANDOMINTEGER(min, max):
     return random.randint(min, max)
 
 

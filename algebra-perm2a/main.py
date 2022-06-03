@@ -5,14 +5,13 @@ def allPrimeNumber():
     pass
 
 def randomPrimeNumber():
-    source = { 
+    source = [ 
         16, 16, 16,
         32, 32, 32,
         64, 64, 64, 64
-    }
+    ]
 
-    length = len(source)
-    for i in range(length):
+    for i in source:
         prime = RANDOMGEN_PRIMOS(i)
         print(prime)
 

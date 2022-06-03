@@ -13,7 +13,7 @@ def MILLER_RABIN(n, s):
         a = RANDOMINTEGER(2, n - 1)
         if (ES_COMPUESTO(a, n, t, u)):
             return False
-    j += 1
-  
+            
+        j += 1
 
     return True
