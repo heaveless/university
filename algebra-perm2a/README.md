@@ -37,7 +37,8 @@ python main.py
 ### Ejercicio 1
 *Generar todos los primos de 3, 4 y 5 cifras.*
 
-any content here
+El algoritmo generara numeros de 3,4 y 5 digitos, s tomara el valor de 50. Verificamos si el numero es primo con la funcion de "MILLER_RABIN" (test de primalidad) retornando True o False tomando a su vez el valor de s para la precision de la prueba.
+La funcion main() llamara a "allPrimeNumber" que contiene una lista de tres numeros indicando que imprimira todos los numeros de n digitos que tomaran cada uno de los elementos de la lista [3,4,5] cada numero que se tomara en el proceso formara parte del exponenete de 10 que se toma como limite para la variable "numero" que este se imprimira hasta que sea menor que el "exponente". 
 
 ```py
 def allPrimeNumber():
@@ -63,9 +64,7 @@ Numeros primos de 5 digitos:
 ### Ejercicio 2
 *Implementar un programa que genere de manera aleatoria al menos 10 primos distintos de 16, 32 y 64 bits.*
 
-Se genera un array con referencia a los bits que se ingresaran a la funcion <kbd>RANDOMGEN_PRIMOS</kbd>, para luego iterarlos y utilizar la funcion anteriormente mencionada.
-
-Por ultimo se imprime en cada iteracion lo que genera la funcion.
+any content here
 
 ```python
 def randomPrimeNumber():
