@@ -63,7 +63,9 @@ Numeros primos de 5 digitos:
 ### Ejercicio 2
 *Implementar un programa que genere de manera aleatoria al menos 10 primos distintos de 16, 32 y 64 bits.*
 
-any content here
+Se genera un array con referencia a los bits que se ingresaran a la funcion <kbd>RANDOMGEN_PRIMOS</kbd>, para luego iterarlos y utilizar la funcion anteriormente mencionada.
+
+Por ultimo se imprime en cada iteracion lo que genera la funcion.
 
 ```python
 def randomPrimeNumber():
