@@ -18,5 +18,6 @@ Homework, exercises and more
   - [Multichannel Convolution](./computer_science_2/multichannel-convolution)
   - [Rapid Keyword Extraction](./computer_science_2/rapid-keyword-extraction)
   - [Spatially Separable Convolutions](./computer_science_2/spatially-separable-convolutions)
+  - [Matrix Walker](./computer_science_2/matrix-walker)
   - [Extra](./_)
 
