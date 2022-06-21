@@ -50,13 +50,16 @@
 // }
 
 
+void divider(const char* current) {
+  std::cout << *current << std::endl;
+}
+
 bool checker(const char* current, const char* tarjet) {
   while (*current != '\0' && *tarjet != '\0'  && *current == *tarjet) {
-  std::cout << *current;
     current++;
     tarjet++;
   }
-  std::cout << "----" << std::endl;
+
   return *tarjet == '\0';
 }
 
@@ -81,6 +84,11 @@ int main()
   //  && stopwordSize
   while(*textPtr != '\0') {
     bool isFound = checker(textPtr, *stopwordPtr);
+    if(isFound) {
+      divider(textPtr);
+      
+      // textPtr = text;
+    }
     std::cout << isFound << std::endl;
     textPtr++;
     // stopwordSize--;
