@@ -4,37 +4,46 @@ from utils.EUCLIDES import EUCLIDES
 from utils.INVERSO import INVERSO
 from utils.EXP_MOD import EXP_MOD
 
-def genKey(bits):
-    b_instance = bits // 2
-    p_prime = RANDOMGEN_PRIMOS(b_instance)
-    q_prime = RANDOMGEN_PRIMOS(b_instance)
-    while p_prime == q_prime:
-        q_prime = RANDOMGEN_PRIMOS(b_instance)
+def RSA_KEY_GENERATOR(bits):
+    arg = bits // 2
+    p = RANDOMGEN_PRIMOS(arg)
+    q = RANDOMGEN_PRIMOS(arg)
+    while p == q:
+        q = RANDOMGEN_PRIMOS(arg)
 
-    prime_value = p_prime * q_prime
-    phiN = (p_prime - 1) * (q_prime - 1)
-
-    random_value = RANDOMBITS(bits)
-    while EUCLIDES(random_value, phiN) != 1:
-        random_value = RANDOMBITS(bits)
+    n = p * q
+    phiN = (p - 1) * (q - 1)
     
-    inverse_value = INVERSO(random_value, phiN)
-    return ([random_value, prime_value], [inverse_value, prime_value])
+    e = RANDOMBITS(bits)
+    while EUCLIDES(e, phiN) != 1:
+        e = RANDOMBITS(bits)
+    
+    d = INVERSO(e, phiN)
+    return (e, n), (d, n)
 
-def rsaCipher(m, k):
-    return EXP_MOD(m, k[0], k[1])
+def CIPHER(m, k: tuple):
+    arg1, arg2 = k
+    return EXP_MOD(m, arg1, arg2)
 
 def main():
-    (P, S) = genKey(64)
-    m_list=[]
-    # print(P, S)
-    print('{:^20}{:^20}{:^20}'.format('m', 'c', 'm\''))
+    k = 64
+    P, S = RSA_KEY_GENERATOR(k)
+    e, n = P
+    d, _ = S
+
+    tab = 62
+    print('e = {:}\nd = {:}\nn = {:}\n'.format(e, d, n))
+    print('-' * tab)
+    print('{:^20}{:^20}{:^20}'.format('m', 'c = P(m)', 'm\' = S(c)'))
+    print('-' * tab)
+
+    stack = []
     for i in range(10):
         m = RANDOMBITS(32)
-        while m in m_list:
+        while m in stack:
             m = RANDOMBITS(32)
-        m_list.append(m)
-        c = rsaCipher(m, P)
-        print('{:^20}{:^20}{:^20}'.format(m, c, rsaCipher(c, S)))
+        stack.append(m)
+        c = CIPHER(m, P)
+        print('{:^20}{:^20}{:^20}'.format(m, c, CIPHER(c, S)))
 
 main()
