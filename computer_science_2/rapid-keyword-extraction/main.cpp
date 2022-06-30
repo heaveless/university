@@ -1,138 +1,140 @@
-#include <iostream>
+#include <stdio.h>
 
-// int compare(const char *s1, const char *s2) {
-//    while (*s1 != '\0' && *s2 != '\0'  && *s1 == *s2) {
-//       s1++;
-//       s2++;
-//    }
-//    return *s1 - *s2;
-// }
-//
-// char* concat(char *dest, const char *src, size_t size) {
-//     size_t idx = 0;
-//     for (; idx < size && src[idx] != '\0'; idx++) {
-//         dest[idx] = src[idx];
-//     }
-//
-//     for (; idx < size; idx++) {
-//         dest[idx] = '\0';
-//     }
-//
-//     return dest;
-// }
-//
-// char* split(char* str, const char* spliter) {
-//     static char* s = NULL;
-//     char* tok;
-//     if(str == NULL) {
-//         if(s == NULL)
-//             return NULL;
-//         } else
-//     s = str;
-//     for(size_t i; (*s != '\0'); s++) {
-//         for(i = 0; (spliter[i] != '\0') && (*s != spliter[i]); i++);
-//             if(spliter[i] == '\0')
-//                 break;
-//     }
-//     if(*s == '\0')
-//         return s = NULL;
-//     tok = s++;
-//     for(size_t i; (*s != '\0'); s++) {
-//         for(i = 0; (spliter[i] != '\0') && (*s != spliter[i]); i++);
-//             if(spliter[i] != '\0')
-//                 break;
-//     }
-//         if(*s != '\0') {
-//             *s = '\0';
-//             s++;
-//         }
-//     return tok;
-// }
+int sizeOfString(const char* source) {
+  int length = 0;
+  // Se realiza el conteo de caracters de un string char: --> not = [n, o, t] = 3
+  while(*source != '\0') {
+    source++;
+    length++;
+  }
 
+  return length;
+}
 
-void divider(const char* current) {
-  std::cout << *current << std::endl;
+void copy(const char* source, char* tarjet, int length) {
+  // Se copia caracter por caracter todo el texto del "source" al "tarjet"
+  while(length) {
+    *tarjet = *source;
+
+    source++;
+    tarjet++;
+
+    length--;
+  }   
+}
+
+void divider(char* tarjet, const char* ref) {
+  int length = sizeOfString(ref);
+
+  // Se define las variables constantes que serviran par alas evaluaciones
+  const char separator = ',';
+  const char space = ' ';
+  const bool specialCharacter = length == 1 && *ref != separator;
+
+  // En caso de ser un stopword especial, se le trata de una menera diferente [".", ",", ";"] 
+  // Se le asigna un comodin para su posterior limpieza
+  if (specialCharacter && *(tarjet - 1) != space && *(tarjet + 1) == space) {
+    *tarjet = '*';
+    return;
+  }
+
+  // Se remplaza los espacios sobrantes e innecesarios por comas
+  tarjet--;
+  if (*tarjet == space)
+    *tarjet = separator;
+  tarjet++;
+
+  // Se reordena todo el texto para suplantar los stopword con los siguentes caracteres que
+  // tendrian que estar, como si no existieran
+  while(*tarjet != '\0') {
+    *tarjet = *(tarjet + length); 
+
+    tarjet++;
+  }
+}
+
+void clean(char* tarjet) {
+  const char separator = ',';
+  
+  // Se itera el texto buscando el caracter "*" que se le asigno de acuerdo a posiciones especiales del texto
+  // para luego remplazarlo con coma(,) y a la vez se elimina las comas innecesarias
+  while(*tarjet != '\0') {
+    if (*tarjet == '*')
+      *tarjet = separator;
+
+    if (*tarjet == separator && *(tarjet + 1) == separator) {
+      tarjet++;
+      *tarjet = '\0';
+    }
+
+    tarjet++;
+  }
 }
 
 bool checker(const char* current, const char* tarjet) {
+  // Se compara los caracteres del stopword actual con los caracteres del texto sucesivamente
   while (*current != '\0' && *tarjet != '\0'  && *current == *tarjet) {
     current++;
     tarjet++;
   }
 
+  // En caso de que en la compracion se haya podido hacer un match completo con el stopword se retorna un boleando
   return *tarjet == '\0';
 }
 
 int main()
 {
+  // definicion de tamanio de palabra y tamanio total de texto completo
   const int wordSize = 20;
   const int totalSize = 300;
 
+  // declaracion de stopwords y texto a analizar en tipo constante (solo lectura)
   const char stopword[totalSize / wordSize][wordSize] = { "is", "not", "that", "there", "are", "many", "can", "you", "with", "one", "of", "those", ".", ",", ";" };
-  const char text[] = "feature extraction is not that complex. there are many algorithms available that can help you with feature extraction. rapid automatic keyword extraction is one of those.";
+  const char mainText[] = "feature extraction is not that complex. there are many algorithms available that can help you with feature extraction. rapid automatic keyword extraction is one of those.";
+
+  // declaracion de variable "text" que servida para ser manipulado
+  const int textLength = sizeof(mainText) / sizeof(*mainText);
+  char text[textLength];
   
+  // generar copia del texto principal de solo lectura a una variable que pueda ser manipulada (mainText -> text)
+  copy(mainText, text, textLength);
+
+  // Se declara punterios constantes para los stopwords, ya que no necesitan ser modificados
+  // Se declara puntero para "text", este si sera modificado desde la nueva variable "textPtr"
   const char (*stopwordPtr)[wordSize] = stopword;
-  const char* textPtr = text;
+  char* textPtr = text;
   int stopwordSize = sizeof(stopword)/sizeof(*stopword);
-
-  // checker(textPtr, *stopwordPtr);
-  // stopwordPtr++;
-  // checker(textPtr, *stopwordPtr);
-
-  //
  
-  //  && stopwordSize
+ // Se imprimi el texto previo a su modificacion
+  printf("%s\n%s\n\n", "Texto Original:", text); 
+
+// Se inicia iteracion del texto a modificar, mientras no se llegue al final de todo el texto
   while(*textPtr != '\0') {
+    // Se verifica si existe el stopword actual del array en el texto
+    // En caso de ser encontrado, se realiza la division a travez de una coma(,)
     bool isFound = checker(textPtr, *stopwordPtr);
     if(isFound) {
-      divider(textPtr);
-      
-      // textPtr = text;
+      divider(textPtr, *stopwordPtr);
     }
-    std::cout << isFound << std::endl;
+  
     textPtr++;
-    // stopwordSize--;
+
+    // Al llegar al final del texto y haber remplazado los stopword con comas,
+    // se itera al siguente stopword del array y se reinicia el puntero del texto
+    if (*textPtr == '\0' && stopwordSize != 0) {
+      stopwordPtr++;
+      stopwordSize--;
+      textPtr = text; 
+    }
   }
 
-  // textPtr++;
-  // std::cout << *textPtr << std::endl;
+  // Se reinicia la variable de tipo puntero con el texto que se esta modificando
+  // Se limpia caracteres sobrantes
+  textPtr = text; 
+  clean(textPtr);
 
-  //
-  // const char* delimiter[] = {".",",",";"};
-  // const char spliter[] = " .";
-  
-
-  // std::cout << "Texto Original:\n" << originalText << std::endl;
-  //
-  // char keyPhrases[totalSize];
-  //
-  // char* text = split(originalText, spliter);
-  //
-  // std::cout << "\nCandidate Key Phrases" << std::endl;
-  // std::cout << "\033[1;31mbold red text\033[0m\n" << std::endl;
-  //
-  // int activeChange = 0;
-  // while (text != NULL)
-  // {
-  //   int found = 0;
-  //   for(int i = 0; i < size; i++)
-  //   {
-  //     if (!compare(stopword[i], text)) {
-  //       if (!activeChange)
-  //         std::cout << ",";
-  //       activeChange = 1;
-  //       found = 1;
-  //       break;
-  //     }
-  //   }
-  //
-  //   if (!found) {
-  //     std::cout << text << " ";
-  //     activeChange = 0;
-  //   }
-  //
-  //   text = split(NULL, spliter);
-  // }
+  // Se imprime el texto posteior a su modificacion
+  printf("%s\n%s", "Candidate Key Phrases:", text); 
 
   return 0;
 }
