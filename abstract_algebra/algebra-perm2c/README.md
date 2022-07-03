@@ -19,7 +19,7 @@ python main.py
 
 ## Ataque 1
 
-*Para hallar el mensaje "m" primero encontraremos cúales son los números primos "p" y "q" que multiplicados dan n. En este caso específico, es posible dado que el número no es muy grande. Podemos entonces hallar phi(n) con estos dos números "p, q". Hallando phi(n) podemos hallar la llave secreta y descifrar c.*
+*Para hallar el mensaje <kbd>m</kbd> primero encontraremos cúales son los números primos <kbd>p</kbd> y <kbd>q</kbd> que multiplicados dan <kbd>n</kbd>. En este caso específico, es posible dado que el número no es muy grande. Podemos entonces hallar <kbd>phi(n)</kbd> con estos dos números <kbd>p</kbd>, <kbd>q</kbd>. Hallando <kbd>phi(n)</kbd> podemos hallar la llave secreta y descifrar <kbd>c</kbd>.*
 
 ```py
 def __generate_primes(n):
@@ -48,7 +48,7 @@ def attack1():
 ```
 ## Ataque 2
 
-*Podemos hacer un ataque de módulo común ya que tenemos un mensaje cifrado dos veces con diferentes exponentes pero mismo módulo. Hallaremos los valores x , y mediante el algoritmo Extendido de Euclides, ya que los necesitamos. Como e_1 * x + e_2 * y = 1 --> c1^x * c2^y mod n = m --> (x es menor que 0) --> c1_inversa^x * c2^y mod n.*
+*Podemos hacer un ataque de módulo común ya que tenemos un mensaje cifrado dos veces con diferentes exponentes pero mismo módulo. Hallaremos los valores x , y mediante el algoritmo Extendido de Euclides, ya que los necesitamos. Como <kbd>e_1 * x + e_2 * y = 1 --> c1^x * c2^y mod n = m --> (x es menor que 0) --> c1_inversa^x * c2^y mod n</kbd>.*
 
 ```py
 def attack2():
@@ -74,7 +74,7 @@ def attack2():
 ```
 ## Ataque 3
 
-*Se comprueba que P(S(m)) = HASH(M), siendo M un mensaje, la función HASH sha1, la función P RSA con la clave pública y la funcion S RSA con la clave secreta. Primero se generan dos claves RSA (P y S) y se asigna m = HASH(M) % P[1] (n) luego se usa RSA para cifrar m (y luego descifrarlo). Este procedimiento es común en firmas digitales para revisar la autenticidad de un archivo.*
+*Se comprueba que <kbd>P(S(m)) = HASH(M)</kbd>, siendo M un mensaje, la función HASH sha1, la función P RSA con la clave pública y la funcion S RSA con la clave secreta. Primero se generan dos claves <kbd>RSA (P y S)</kbd> y se asigna <kbd>m = HASH(M) % P[1] (n)</kbd> luego se usa RSA para cifrar m (y luego descifrarlo). Este procedimiento es común en firmas digitales para revisar la autenticidad de un archivo.*
 
 ```py
 def attack3():
