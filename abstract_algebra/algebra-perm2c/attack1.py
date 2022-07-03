@@ -25,7 +25,6 @@ def attack1():
     S = INVERSO(e, phiN), n
 
     m = CIPHER(c, S)
-    c2 = CIPHER(m, P)
+    cx = CIPHER(m, P)
 
-    print('----------- ATTACK 1 -----------')
-    print("m =", m, "\nc = ", c2, "\nP(m) = c?:",  c == c2)
+    print("m: {:}\nc: {:}\nP(m) = cx: {:}".format(m, cx, c == cx))
