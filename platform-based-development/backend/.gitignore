@@ -1,0 +1,6 @@
+debug.log
+
+.env
+.venv/
+migrations/
+database.db
