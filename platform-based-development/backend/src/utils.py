@@ -1,5 +1,4 @@
 import os
-import sys
 
 def module_path():
     base_url = os.environ.get('DATABASE_TYPE') + ':///'
