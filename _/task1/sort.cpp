@@ -1,5 +1,7 @@
 #include <time.h>
 
+#define VALIDATE(a, b) (a > b)
+
 class Algorithm
 {
 private:
@@ -28,25 +30,52 @@ public:
   }
 
   template <class T>
-  static void sortWithPolymorphism(int *data, int length, T type) 
+  static void sortWithPolymorphism(int *data, int length, T type)
   {
-     if (length == 1)
+    if (length == 1)
       return;
 
     for (int *ptr = data; ptr < data + length; ptr++)
     {
       int *next = ptr + 1;
 
-      if ((*type)->validate(*ptr, *next))
+      if ((*type).validate(ptr, next))
         swap(ptr, next);
     }
 
-    sortWithNothing(data, --length);
+    sortWithPolymorphism(data, --length, type);
   }
 
   template <class T>
-  static void sortWithFunction(int *ar, int n, T type) {}
+  static void sortWithFunction(int *data, int length, T type)
+  {
+    if (length == 1)
+      return;
 
-  template <class T>
-  static void sortWithMacro(int *ar, int n, T type) {}
+    for (int *ptr = data; ptr < data + length; ptr++)
+    {
+      int *next = ptr + 1;
+
+      if ((*type)(ptr, next))
+        swap(ptr, next);
+    }
+
+    sortWithFunction(data, --length, type);
+  }
+
+  static void sortWithMacro(int *data, int length)
+  {
+    if (length == 1)
+      return;
+
+    for (int *ptr = data; ptr < data + length; ptr++)
+    {
+      int *next = ptr + 1;
+
+      if (VALIDATE(*ptr, *next))
+        swap(ptr, next);
+    }
+
+    sortWithMacro(data, --length);
+  }
 };

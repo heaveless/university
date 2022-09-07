@@ -5,6 +5,7 @@
         "new": "cpp",
         "array": "cpp",
         "string": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "random": "cpp"
     }
 }
