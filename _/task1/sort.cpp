@@ -28,7 +28,21 @@ public:
   }
 
   template <class T>
-  static void sortWithPolymorphism(int *ar, int n, T type) {}
+  static void sortWithPolymorphism(int *data, int length, T type) 
+  {
+     if (length == 1)
+      return;
+
+    for (int *ptr = data; ptr < data + length; ptr++)
+    {
+      int *next = ptr + 1;
+
+      if ((*type)->validate(*ptr, *next))
+        swap(ptr, next);
+    }
+
+    sortWithNothing(data, --length);
+  }
 
   template <class T>
   static void sortWithFunction(int *ar, int n, T type) {}

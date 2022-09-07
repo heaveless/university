@@ -14,7 +14,7 @@ int *generate(int length)
     return data;
 }
 
-void print(int *data, int length, char const *title = "")
+void print(int *data, int length, char const *title = "Base data")
 {
     printf("- %s -\n", title);
 
