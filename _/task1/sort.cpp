@@ -34,12 +34,12 @@ private:
 
       switch (algorithm)
       {
-      // case AlgorithmType::Polymorphism:
-      //   isValidate = (*type).validate(ptr, next);
-      //   break;
-      // case AlgorithmType::Function:
-      //   isValidate = (*type)(ptr, next);
-      // break;
+      case AlgorithmType::Polymorphism:
+        // isValidate = (*type).validate(ptr, next);
+        break;
+      case AlgorithmType::Function:
+        // isValidate = (*type)(ptr, next);
+      break;
       case AlgorithmType::Macro:
         isValidate = VALIDATE(*ptr, *next);
         break;
@@ -47,7 +47,6 @@ private:
         isValidate = *ptr > *next;
         break;
       }
-
 
       if (isValidate)
         swap(ptr, next);
