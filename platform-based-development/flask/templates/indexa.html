@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+  {% assets "style" %}
+    
+  {% endassets %}
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="body">
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <form id="data-form" class="form">
+          <div class="form-group">
+            <label for="input-name">Nombre</label>
+            <input
+              type="text"
+              id="input-name"
+              name="NOMBRE"
+              required
+              placeholder="Ingrese su nombre"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="input-direction">Direccion</label>
+            <input
+              type="text"
+              id="input-direction"
+              name="DIRECCION"
+              required
+              placeholder="Ingrese su direccion"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="input-gender">Sexo</label>
+            <select id="input-gender" name="SEXO" required class="form-select">
+              <option selected disabled>Seleccione</option>
+              <option value="M">Femenino</option>
+              <option value="F">Masculino</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="input-observations">Observaciones</label>
+            <textarea
+              id="input-observations"
+              name="OBSERVACIONES"
+              rows="3"
+              required
+              class="form-control"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="error-content">
+            <p id="error-message"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

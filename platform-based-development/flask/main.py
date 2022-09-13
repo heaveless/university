@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_assets import Environment, Bundle
 from waitress import serve
 
@@ -9,9 +9,12 @@ assets = Environment(app)
 def index():
     return render_template("index.html")
 
-@app.route("/<string:name>")
-def hello(name):
-    return "hello, {}!".format(name)
+@app.route("/hello", methods=["POST"])
+def hello():
+    name = request.form.get("name")
+    return render_template("curriculum.html", context={
+        'name': name    
+    })
 
 assets.register('theme', Bundle('scss/theme.scss', filters='pyscss', output='css/theme.css'))
 
