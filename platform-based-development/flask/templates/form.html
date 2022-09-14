@@ -10,24 +10,27 @@
       rel="stylesheet"
     />
 
-  {% assets "style" %}
-    
-  {% endassets %}
-
-    <link rel="stylesheet" href="style.css" />
+    {% assets "form-styles" %}
+      <link rel=stylesheet type=text/css ref="{{ ASSET_URL }}">
+    {% endassets %}
   </head>
   <body class="body">
     <div class="container">
       <div class="d-flex justify-content-center">
-        <form id="data-form" class="form">
+        <form 
+          id="data-form" 
+          action="{{ url_for('curriculum') }}" 
+          method="post"
+          class="form"
+        >
           <div class="form-group">
             <label for="input-name">Nombre</label>
             <input
               type="text"
               id="input-name"
-              name="NOMBRE"
+              name="name"
               required
-              placeholder="Ingrese su nombre"
+              placeholder="Input your name"
               class="form-control"
             />
           </div>
@@ -68,6 +71,9 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js"></script>
-    <script src="script.js"></script>
+    
+    {% assets "form-scripts" %}
+      <script type=text/javascript src="{{ ASSET_URL }}"></script>
+    {% endassets %}
   </body>
 </html>

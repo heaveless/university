@@ -10,6 +10,7 @@ flask-sqlalchemy = "*"
 python-dotenv = "*"
 pyscss = "*"
 flask-assets = "*"
+dukpy = "*"
 
 [dev-packages]
 

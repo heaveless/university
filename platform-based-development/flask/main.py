@@ -7,16 +7,17 @@ assets = Environment(app)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("form.html")
 
-@app.route("/hello", methods=["POST"])
-def hello():
-    name = request.form.get("name")
-    return render_template("curriculum.html", context={
-        'name': name    
-    })
+@app.route("/curriculum", methods=["POST"])
+def curriculum():
+    context = request.form.to_dict()
+    return render_template("curriculum.html", context=context)
 
-assets.register('theme', Bundle('scss/theme.scss', filters='pyscss', output='css/theme.css'))
+assets.register('form-styles', Bundle('scss/form.scss', filters='pyscss', output='css/form.css'))
+assets.register('form-scripts', Bundle('ts/utils.ts', filters='dukpy', output='js/utils.js'))
+
+assets.register('curriculum-styles', Bundle('scss/curriculum.scss', filters='pyscss', output='css/curriculum.css'))
 
 if __name__ == "__main__":
     serve(app, host="0.0.0.0", port=5000)
