@@ -11,7 +11,7 @@
     />
 
     {% assets "form-styles" %}
-      <link rel=stylesheet type=text/css ref="{{ ASSET_URL }}">
+        <link rel=stylesheet type=text/css href="{{ ASSET_URL }}">
     {% endassets %}
   </head>
   <body class="body">
@@ -24,40 +24,199 @@
           class="form"
         >
           <div class="form-group">
-            <label for="input-name">Nombre</label>
+            <label for="full_name">Nombre y Apellidos</label>
             <input
               type="text"
-              id="input-name"
-              name="name"
+              id="full_name"
+              name="full_name"
               required
-              placeholder="Input your name"
+              placeholder="Ingresa tu nombre completo"
               class="form-control"
             />
           </div>
+
           <div class="form-group">
-            <label for="input-direction">Direccion</label>
+            <label for="birthdate">Fecha de Nacimiento</label>
             <input
-              type="text"
-              id="input-direction"
-              name="DIRECCION"
+              type="date"
+              id="birthdate"
+              name="birthdate"
               required
-              placeholder="Ingrese su direccion"
+              placeholder="Ingresa tu fecha de nacimiento"
               class="form-control"
             />
           </div>
+
           <div class="form-group">
-            <label for="input-gender">Sexo</label>
-            <select id="input-gender" name="SEXO" required class="form-select">
+            <label for="occupation">Ocupacion</label>
+            <input
+              type="text"
+              id="occupation"
+              name="occupation"
+              required
+              placeholder="Ingresa tu ocupacion"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Telefono</label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              required
+              placeholder="Ingresa tu telefono"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              required
+              placeholder="Ingresa tu email"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="nationality">Nacionalidad</label>
+            <select id="nationality" name="nationality" required class="form-select">
               <option selected disabled>Seleccione</option>
-              <option value="M">Femenino</option>
-              <option value="F">Masculino</option>
+              <option value="Peru">Peru</option>
+              <option value="Chile">Chile</option>
             </select>
           </div>
+
           <div class="form-group">
-            <label for="input-observations">Observaciones</label>
+            <label for="english_level">Nivel de Ingles</label>
+            <div>
+              <div class="form-radio">
+                <input type="radio" name="english_level" id="english_level1" value="basico">
+                <label for="english_level1">Basico</label>
+              </div>
+              <div class="form-radio">
+                <input type="radio" name="english_level" id="english_level2" value="intermedio">
+                <label for="english_level2">Intermedio</label>
+              </div>
+              <div class="form-radio">
+                <input type="radio" name="english_level" id="english_level3" value="avanzado">
+                <label for="english_level3">Avanzado</label>
+              </div>
+              <div class="form-radio">
+                <input type="radio" name="english_level" id="english_level4" value="fluido">
+                <label for="english_level4">Fluido</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="programming_languages">Lenguajes de Programacion</label>
+            <select
+              id="programming_languages" 
+              name="programming_languages"
+              multiple
+              required 
+              class="form-select"
+            >
+              <option value="c++">C++</option>
+              <option value="python">Python</option>
+              <option value="c#">C#</option>
+              <option value="java">Java</option>
+              <option value="javascript">Javascript</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="aptitudes">Aptitudes</label>
+            <input
+              type="text"
+              id="aptitudes"
+              name="aptitudes"
+              list="aptitudes_list"
+              required
+              placeholder="Input your aptitudes"
+              class="form-control"
+            />
+            <datalist
+              id="aptitudes_list"
+            >
+              <option value="flexibilidad">
+              <option value="resiliencia">
+              <option value="liderazgo">
+              <option value="integridad">
+              <option value="empatia">
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label for="ability">
+              Habilidades
+            </label>
+            <div>
+              <div class="form-check">
+                <input 
+                  id="ability1"
+                  name="ability1"
+                  type="checkbox" 
+                  value="Creatividad" 
+                  class="form-check-input"
+                >
+                <label class="form-check-label" for="ability1">
+                  Acondicionamiento fisico
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  id="ability2"
+                  name="ability2"
+                  type="checkbox" 
+                  value="Innovacion"
+                  class="form-check-input" 
+                >
+                <label class="form-check-label" for="ability2">
+                  Creacion videos deportivos
+                </label>
+              </div>
+              <div class="form-check">
+                <input 
+                  id="ability3"
+                  name="ability3"
+                  type="checkbox"
+                  value="Adaptabilidad"
+                  class="form-check-input"
+                >
+                <label class="form-check-label" for="ability3">
+                  Pack Office
+                </label>
+              </div>
+              <div class="form-check">
+                <input 
+                  id="ability4"
+                  name="ability4"
+                  type="checkbox" 
+                  value="Autonomia"
+                  class="form-check-input" 
+                >
+                <label
+                  class="form-check-label" 
+                  for="ability4"
+                >
+                  Tenis
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="profile">Perfil</label>
             <textarea
-              id="input-observations"
-              name="OBSERVACIONES"
+              id="profile"
+              name="profile"
               rows="3"
               required
               class="form-control"
@@ -70,10 +229,5 @@
         </form>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.js"></script>
-    
-    {% assets "form-scripts" %}
-      <script type=text/javascript src="{{ ASSET_URL }}"></script>
-    {% endassets %}
   </body>
 </html>

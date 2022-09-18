@@ -22,8 +22,8 @@
                     <img src="https://visafoto.com/img/passport-photo-original7.jpg" alt="" class="header__photo-img">
                 </div>
                 <div class="header__title">
-                  <div class="header__heading">{{ context.name }}</div>
-                    <div class="header__subheading">Puesto Ocupado / Buscado</div>
+                  <div class="header__heading">{{ context.full_name }}</div>
+                    <div class="header__subheading">{{ context.occupation }}</div>
                 </div>
             </div>
             <div class="main">
@@ -35,15 +35,15 @@
                         <div class="section__content">
                             <div class="item">
                                 <div class="item__icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
-                                <div class="item__title">999 999 999</div>
+                                <div class="item__title">{{ context.phone }}</div>
                             </div>
                             <div class="item">
                                 <div class="item__icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
-                                <div class="item__title">jose.martinez@gmail.com</div>
+                                <div class="item__title">{{ context.email }}</div>
                             </div>
                             <div class="item">
                                 <div class="item__icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-                                <div class="item__title">Mexico DF</div>
+                                <div class="item__title">{{ context.nationaly }}</div>
                             </div>
                             <div class="item">
                                 <div class="item__icon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></div>
@@ -58,10 +58,10 @@
                         </div>
                         <div class="section__content">
                             <div class="item">
-                                <div class="item__title">Expanol: Nativo</div>
+                                <div class="item__title">Espanol: Nativo</div>
                             </div>
                             <div class="item">
-                                <div class="item__title">Ingles: Bilingue (TOBIC 900)</div>
+                                <div class="item__title">Ingles: {{ context.english_level }}</div>
                             </div>
                             <div class="item">
                                 <div class="item__title">Frances: Intermedio (B2)</div>
@@ -90,10 +90,10 @@
                         </div>
                         <div class="section__content">
                             <ul class="list">
-                                <li class="list__item">Acondicionamiento fisico</li>
-                                <li class="list__item">Creacion videos deportivos</li>
-                                <li class="list__item">Pack Office</li>
-                                <li class="list__item">tenis</li>
+                                <li class="list__item">{{ context.ability1 }}</li>
+                                <li class="list__item">{{ context.ability2 }}</li>
+                                <li class="list__item">{{ context.ability3 }}</li>
+                                <li class="list__item">{{ context.ability4 }}</li>
                             </ul>
                         </div>
                     </div>
@@ -115,8 +115,7 @@
                     <div class="section">
                         <div class="section__title">Perfil</div>
                         <div class="section__content">
-                            Trabajador social con 4 anos de expericia en proyectos colectivos. Mi objetivo es lograr que
-                            los jovenes obtengan acceso a la educacion superior mediante logros depotivos.
+                            {{ context.profile }}
                         </div>
                     </div>
                     <div class="section">
