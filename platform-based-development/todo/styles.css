@@ -5,7 +5,7 @@
 
 body {
   padding: 15px 20px;
-}
+}
 
 form {
   display: flex;
@@ -13,5 +13,28 @@ form {
 }
 
 #container {
-  margin-top: 2px;
+  margin-top: 20px;
+}
+
+.todo__item {
+  display: flex;
+  align-items: center;
+}
+
+.todo__item + .todo__item {
+  margin-top: 5px;
+}
+
+.todo__item > * + * {
+  margin-left: 5px;
+}
+
+.todo__item > button {
+  cursor: pointer;
+
+  padding: 0 5px;
+}
+
+.line-through {
+  text-decoration: line-through
 }
