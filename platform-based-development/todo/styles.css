@@ -12,8 +12,12 @@ form {
   align-items: center;
 }
 
-#container {
-  margin-top: 20px;
+form > * + * {
+  margin-left: 5px;
+}
+
+.section {
+  margin-top: 15px;
 }
 
 .todo__item {
@@ -36,5 +40,5 @@ form {
 }
 
 .line-through {
-  text-decoration: line-through
+  text-decoration: line-through;
 }

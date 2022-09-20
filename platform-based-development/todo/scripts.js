@@ -3,6 +3,7 @@
 const EMPTY = "";
 
 const FORM = document.querySelector("form");
+const BUTTON_COMPLETE = document.getElementById("complete-all");
 const CONTAINER = document.getElementById("container");
 
 const storage = {
@@ -28,12 +29,20 @@ function submit(event) {
 
   const formData = new FormData(FORM);
   for (const [k, v] of formData.entries()) {
-    newItem = { id: uuidv4(), [k]: v };
+    newItem = { id: uuidv4(), checked: false, [k]: v };
   }
 
   addItem(newItem);
   render();
   clear();
+}
+
+function completeAll() {
+  CONTAINER.innerHTML = EMPTY;
+
+  storage.todoList.forEach((e, idx) =>
+    addElement(Object.assign(e, { checked: true }), ++idx)
+  );
 }
 
 function render() {
@@ -53,7 +62,7 @@ function addItem(item) {
   storage.todoList.push(item);
 }
 
-function addElement({ id, todo }, idx) {
+function addElement({ id, checked, todo }, idx) {
   const ITEM_CONTAINER = document.createElement("div");
   const ITEM_INPUT = document.createElement("input");
   const ITEM_SPAN = document.createElement("span");
@@ -64,15 +73,24 @@ function addElement({ id, todo }, idx) {
   ITEM_CONTAINER.classList.add("todo__item");
 
   ITEM_INPUT.type = "checkbox";
+  ITEM_INPUT.checked = checked;
+
+  if (checked) {
+    ITEM_SPAN.classList.add("line-through");
+    ITEM_P.classList.add("line-through");
+  }
+
   ITEM_INPUT.addEventListener("change", function () {
     if (!this.checked) {
+      ITEM_SPAN.classList.remove("line-through");
       ITEM_P.classList.remove("line-through");
     } else {
+      ITEM_SPAN.classList.add("line-through");
       ITEM_P.classList.add("line-through");
     }
   });
 
-  ITEM_SPAN.textContent = idx;
+  ITEM_SPAN.textContent = `${idx}.`;
 
   ITEM_P.textContent = todo;
 
@@ -105,6 +123,7 @@ function removeElement(id) {
 
 function bootstrap() {
   FORM.addEventListener("submit", submit);
+  BUTTON_COMPLETE.addEventListener("click", completeAll);
 }
 
 bootstrap();
