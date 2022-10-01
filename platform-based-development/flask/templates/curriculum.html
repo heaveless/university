@@ -90,10 +90,9 @@
                         </div>
                         <div class="section__content">
                             <ul class="list">
-                                <li class="list__item">{{ context.ability1 }}</li>
-                                <li class="list__item">{{ context.ability2 }}</li>
-                                <li class="list__item">{{ context.ability3 }}</li>
-                                <li class="list__item">{{ context.ability4 }}</li>
+                                {% for ability in context.skill %}
+                                <li class="list__item">{{ ability }}</li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
