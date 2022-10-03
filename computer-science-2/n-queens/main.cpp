@@ -74,10 +74,29 @@ int main() {
       do {
         // Verifica posiciones haca atras antes de la reina: 
         // -1 (horizontal-izquierdo), -7 (lateral-derecho), -8 (vertical-superior), -9 (lateral-izquierdo)
-        if(n < x) found = (checker = ptr - 1 * n, *checker == QUEEN);
-        if(n < y2 && !found) found = (checker = ptr - 7 * n, *checker == QUEEN);
-        if(n < y && !found) found = (checker = ptr - 8 * n, *checker == QUEEN);
-        if(n < x2 && !found) found = (checker = ptr - 9 * n, *checker == QUEEN);
+        if(n < x) // Limitar X
+            found = (
+              checker = ptr - 1 * n, // Verificar posicion izquierdo horizontal
+              *checker == QUEEN // Verificar si hay colision con alguna reina
+            );
+
+        if(n < y2 && !found) // Limitar Lateral derecha 
+          found = (
+            checker = ptr - 7 * n, // Verificar posicion lateral derecho
+            *checker == QUEEN
+          );
+
+        if(n < y && !found) // Limitar Y
+          found = (
+            checker = ptr - 8 * n, // Verificar vertical superior
+            *checker == QUEEN
+          );
+
+        if(n < x2 && !found) // Limitar lateral izquierdo
+          found = (
+            checker = ptr - 9 * n, // Verficar lateral izquierdo
+            *checker == QUEEN
+          );
      
         // En caso de encontrar un error, termina el while.
         if(found) break;
