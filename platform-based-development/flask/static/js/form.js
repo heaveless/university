@@ -2,11 +2,11 @@ const FORM = document.getElementById("data-form");
 
 const baseProperties = ["property", "child", "child-properties", "multiple"];
 const baseObjects = {
-  input: () => "",
-  select2: () => "",
-  "select2-tags": () => "",
-  datepicker: () => "",
-  "datepicker-multiple": () => "",
+  input: (target) => target.value,
+  select2: (target) => target.val(),
+  "select2-tags": (target) => target.find(":selected"),
+  datepicker: (target) => target.val(),
+  "datepicker-multiple": (target) => target.data("daterangepicker"),
 };
 
 function getMetadata() {
