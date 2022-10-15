@@ -5,8 +5,52 @@
 .form {
   min-width: 400px;
 
-  & > * + * {
+  &__label {
     margin-top: 15px;
+  }
+  
+  &__label-button {
+    display: flex;
+    align-items: center;
+
+    & > * + * {
+      margin-left: 10px;
+    }
+  }
+
+  &__input-group {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 15px;
+
+    & > * + * {
+      margin-top: 10px;
+    }
+  }
+
+  &__input-item {
+    display: flex;
+
+    & > * + * {
+      width: auto;
+
+      margin-left: 10px;
+    }
+
+    &.except {
+      & > * {
+        margin-left: 0;
+      }
+
+      & > * + * {
+        width: auto;
+      }
+
+      & > * + * + * {
+        margin-left: 10px;
+      }
+    }
   }
 }
 

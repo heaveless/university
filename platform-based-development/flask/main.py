@@ -17,11 +17,12 @@ def curriculum():
     context = request.form.to_dict()
     return render_template("curriculum.html", context=context)
 
-assets.register('form-styles', Bundle('scss/form.scss', filters='pyscss', output='css/form.css'))
-assets.register('form-scrips', Bundle('js/utils.js', filters='jsmin', output='js/form.css'))
+assets.register('form-styles', Bundle('scss/form.scss', filters='pyscss', output='css/_form.css'))
+assets.register('form-scrips', Bundle('js/form.js', filters='jsmin', output='js/_form.js'))
 
-assets.register('curriculum-styles', Bundle('scss/curriculum.scss', filters='pyscss', output='css/curriculum.css'))
+assets.register('curriculum-styles', Bundle('scss/curriculum.scss', filters='pyscss', output='css/_curriculum.css'))
 
 if __name__ == "__main__":
+    print("http://localhost:5000")
     serve(app, host="0.0.0.0", port=5000)
 
