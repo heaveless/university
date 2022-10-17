@@ -64,3 +64,15 @@
 input[type="checkbox"] {
   margin-right: 5px;
 }
+
+.success {
+  $color: #047515;
+  border: 1px solid #047515;
+  background-color: rgba($color, 0.1);
+}
+
+.error {
+  $color: #ff2b2b;
+  border: 1px solid red;
+  background-color: rgba($color, 0.1);
+}

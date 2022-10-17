@@ -18,7 +18,7 @@ def curriculum():
     return render_template("curriculum.html", context=context)
 
 assets.register('form-styles', Bundle('scss/form.scss', filters='pyscss', output='css/_form.css'))
-assets.register('form-scrips', Bundle('js/form.js', filters='jsmin', output='js/_form.js'))
+assets.register('form-scrips', Bundle('js/validate.js', 'js/utils.js', 'js/form.js', filters='jsmin', output='js/_form.js'))
 
 assets.register('curriculum-styles', Bundle('scss/curriculum.scss', filters='pyscss', output='css/_curriculum.css'))
 

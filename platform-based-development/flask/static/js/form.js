@@ -1,12 +1,24 @@
 const FORM = document.getElementById("data-form");
 
-const baseProperties = ["property", "child", "child-properties", "multiple"];
+const baseProperties = ["property", "child", "multiple"];
 const baseObjects = {
   input: (target) => target.value,
-  select2: (target) => target.val(),
-  "select2-tags": (target) => target.find(":selected"),
-  datepicker: (target) => target.val(),
-  "datepicker-multiple": (target) => target.data("daterangepicker"),
+  textarea: (target) => target.value,
+  select2: (target) => $(target).val(),
+  "select2-tags": (target) =>
+    $(target)
+      .select2("data")
+      .map((e) => e.text),
+  datepicker: (target) => $(target).val(),
+  "datepicker-multiple": (target) => {
+    const { startDate, endDate } = $(target).data("daterangepicker");
+    const format = "MM/DD/YYYY";
+
+    return {
+      startDate: startDate.format(format),
+      endDate: endDate.format(format),
+    };
+  },
 };
 
 function getMetadata() {
@@ -17,87 +29,101 @@ function getMetadata() {
       if (baseProperties.includes(curr)) acc[curr] = element.getAttribute(curr);
       return acc;
     }, {});
-    return { ...data, element };
+    return _.assign(data, { element });
   });
 }
 
 function getExecutables(metadata) {
   return metadata.map((meta) => {
     if (_.has(meta, "multiple")) {
-      const chilElements = meta.element.childNodes;
-
       const hasChild = _.has(meta, "child");
-      const hasChildProperties = _.has(meta, "child-properties");
 
-      Array.from(chilElements).map((child) => {
-        if (hasChild && hasChildProperties) {
-          const libs = meta.element.getAttribute("child").split(",");
-          const props = meta.element
-            .getAttribute("child-properties")
-            .split(",");
+      meta.exec = () => {
+        if (hasChild && meta.element.getAttributeNames()) {
+          const props = meta.element.getAttribute("child").split(",");
 
-          const mapped = libs.map((lib, idx) => ({
-            exec: baseObjects[lib],
-            target: child,
-            prop: props[idx],
-          }));
-        }
-      });
-
-      if (_.has(meta, "child") && _.has(meta, "child-properties")) {
-        const libs = meta.element.getAttribute("child").split(",");
-        const props = meta.element.getAttribute("child-properties").split(",");
-
-        const objs = libs.map((lib, idx) => ({
-          exec: baseObjects[lib],
-          target: chilElements[idx],
-          prop: props[idx],
-        }));
-
-        meta.exec = () =>
-          objs.reduce(
-            (acc, curr) => (
-              acc.push({ [curr.prop]: curr.exec(curr.target) }), acc
-            ),
-            []
+          const childrenElements = Array.from(
+            meta.element.querySelectorAll(":scope > *")
           );
-      } else if (_.has(meta, "child")) {
-        const lib = meta.element.getAttribute("child");
 
-        // const obj = { exec: baseObjects[lib],
-        //         target:
-        //     prop: meta.property };
-      } else {
-        meta.exec = () => {
-          if (meta.element.hasAttribute("select2-tags"))
-            return baseObjects["select2-tags"](meta.element);
+          return childrenElements.map((child) => {
+            const grandChildrens = Array.from(
+              child.querySelectorAll("[field]")
+            );
 
-          return [];
-        };
-      }
+            return grandChildrens.reduce((acc, curr, idx) => {
+              const lib = curr.getAttribute("field");
+
+              const mapped = {
+                exec: baseObjects[lib],
+                target: curr,
+                property: props[idx],
+              };
+
+              return (acc[mapped.property] = mapped.exec(mapped.target)), acc;
+            }, {});
+          });
+        } else if (hasChild) {
+          const childrenElements = Array.from(
+            meta.element.querySelectorAll(":scope > *")
+          );
+
+          return childrenElements.map((child) => {
+            const grandChildren = child.querySelector("[field]");
+            const lib = grandChildren.getAttribute("field");
+
+            const mapped = {
+              exec: baseObjects[lib],
+              target: grandChildren,
+            };
+
+            return mapped.exec(mapped.target);
+          });
+        } else {
+          const children = meta.element;
+          const lib = children.getAttribute("field");
+          const mapped = {
+            exec: baseObjects[lib],
+            target: children,
+          };
+          return mapped.exec(mapped.target);
+        }
+      };
     } else {
-      meta.exec = () => "baseObjects[meta.property]";
+      const attribute = meta.element.getAttribute("field");
+
+      const mapped = {
+        exec: baseObjects[attribute],
+        target: meta.element,
+      };
+
+      meta.exec = () => mapped.exec(mapped.target);
     }
+
     return _.pick(meta, ["property", "exec"]);
   });
 }
 
-function generatePayload() {
+function getPayload() {
   const metadata = getMetadata();
   const executables = getExecutables(metadata);
-  console.log(executables);
-  const payload = executables.reduce(
+
+  return executables.reduce(
     (acc, curr) => ((acc[curr.property] = curr.exec()), acc),
     {}
   );
-  console.log(payload);
-  return {};
+}
+
+function validate(payload) {
+  return [true, payload];
 }
 
 function submit() {
   FORM.onsubmit = () => {
     try {
-      const payload = generatePayload();
+      const payload = getPayload();
+      const [isSuccess, data] = validate(payload);
+      // console.log(isSuccess, data);
 
       return false;
     } catch (error) {
@@ -107,6 +133,7 @@ function submit() {
 }
 
 function bootstrap() {
+  loadValidators();
   submit();
 }
 

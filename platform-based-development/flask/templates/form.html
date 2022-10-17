@@ -42,6 +42,8 @@
             <input
               type="text"
               property="full_name"
+              field="input"
+              validate="isNotEmpty"
               placeholder="Ingresa tu nombre completo"
               class="form-control"
             />
@@ -52,6 +54,7 @@
             <input
               type="text"
               property="birthdate"
+              field="datepicker"
               datepicker
               class="form-control"
             />
@@ -62,6 +65,8 @@
             <input
               type="text"
               property="occupation"
+              field="input"
+              validate="isNotEmpty"
               placeholder="Ingresa tu ocupacion"
               class="form-control"
             />
@@ -72,6 +77,8 @@
             <input
               type="text"
               property="phone"
+              field="input"
+              validate="isNotEmpty|isPhone"
               placeholder="Ingresa tu telefono"
               class="form-control"
             />
@@ -82,6 +89,8 @@
             <input
               type="text"
               property="email"
+              field="input"
+              validate="isNotEmpty|isEmail"
               placeholder="Ingresa tu email"
               class="form-control"
             />
@@ -89,7 +98,12 @@
 
           <div class="form-group">
             <label>Nacionalidad</label>
-            <select property="nationality" select2 class="form-control">
+            <select
+              property="nationality"
+              field="select2"
+              select2
+              class="form-control"
+            >
               <option>Peru</option>
               <option>Chile</option>
               <option>Ruso</option>
@@ -101,40 +115,27 @@
           <div class="form-group">
             <div class="form__label-button">
               <label>Idiomas</label>
-              <button type="button" class="btn btn-sm btn-primary">+</button>
-            </div>
-            <div class="form__input-group">
-              <div
-                property="languages"
-                child="select2,select2"
-                child-properties="language,level"
-                multiple
-                class="form__input-item except"
+              <button
+                type="button"
+                class="btn btn-sm btn-primary"
+                onclick="createItem(this, ['select2', 'select2'], 'except')"
               >
-                <select required select2 class="form-control">
-                  <option>Ingles</option>
-                  <option>Ruso</option>
-                  <option>Japones</option>
-                  <option>Chino</option>
-                  <option>Coreano</option>
-                </select>
-                <select required select2 class="form-control">
-                  <option>Basico</option>
-                  <option>Intermedio</option>
-                  <option>Avanzado</option>
-                  <option>Fluido</option>
-                </select>
-                <button type="button" class="btn btn-sm btn-danger">
-                  &minus;
-                </button>
-              </div>
+                +
+              </button>
             </div>
+            <div
+              property="languages"
+              child="language,level"
+              multiple
+              class="form__input-group"
+            ></div>
           </div>
 
           <div class="form-group">
             <label>Lenguajes de Programacion</label>
             <select
               property="programming_languages"
+              field="select2-tags"
               select2-tags
               multiple="multiple"
               class="form-control"
@@ -151,6 +152,7 @@
             <label>Aptitudes</label>
             <select
               property="aptitudes"
+              field="select2-tags"
               select2-tags
               multiple="multiple"
               class="form-control"
@@ -166,83 +168,66 @@
           <div class="form-group">
             <div class="form__label-button">
               <label>Habilidades</label>
-              <button type="button" class="btn btn-sm btn-primary">+</button>
-            </div>
-            <div class="form__input-group">
-              <div
-                property="skills"
-                child="input"
-                multiple
-                class="form__input-item"
+              <button
+                type="button"
+                class="btn btn-sm btn-primary"
+                onclick="createItem(this, ['input'])"
               >
-                <input
-                  type="text"
-                  placeholder="Ingresa una habilidad"
-                  class="form-control"
-                />
-                <button type="button" class="btn btn-sm btn-danger">
-                  &minus;
-                </button>
-              </div>
+                +
+              </button>
             </div>
+            <div
+              property="skills"
+              child
+              multiple
+              class="form__input-group"
+            ></div>
           </div>
 
           <div class="form-group">
             <div class="form__label-button">
               <label>Experiencia Laboral</label>
-              <button type="button" class="btn btn-sm btn-primary">+</button>
-            </div>
-            <div class="form__input-group">
-              <div
-                property="work_experience"
-                child="input,datepicker-multiple"
-                child-properties="name,dates"
-                multiple
-                class="form__input-item"
+              <button
+                type="button"
+                class="btn btn-sm btn-primary"
+                onclick="createItem(this, ['input', 'datepicker-multiple'])"
               >
-                <input
-                  type="text"
-                  placeholder="Ingresa una experiencia laboral"
-                  class="form-control"
-                />
-                <input type="text" datepicker-multiple class="form-control" />
-                <button type="button" class="btn btn-sm btn-danger">
-                  &minus;
-                </button>
-              </div>
+                +
+              </button>
             </div>
+            <div
+              property="work_experience"
+              child="name,dates"
+              multiple
+              class="form__input-group"
+            ></div>
           </div>
 
           <div class="form-group">
             <div class="form__label-button">
               <label>Formacion</label>
-              <button type="button" class="btn btn-sm btn-primary">+</button>
-            </div>
-            <div class="form__input-group">
-              <div
-                property="training"
-                child="input,datepicker-multiple"
-                child-properties="name,dates"
-                multiple
-                class="form__input-item"
+              <button
+                type="button"
+                class="btn btn-sm btn-primary"
+                onclick="createItem(this, ['input', 'datepicker-multiple'])"
               >
-                <input
-                  type="text"
-                  placeholder="Ingresa una formacion"
-                  class="form-control"
-                />
-                <input type="text" datepicker-multiple class="form-control" />
-                <button type="button" class="btn btn-sm btn-danger">
-                  &minus;
-                </button>
-              </div>
+                +
+              </button>
             </div>
+            <div
+              property="training"
+              child="name,dates"
+              multiple
+              class="form__input-group"
+            ></div>
           </div>
 
           <div class="form-group">
             <label>Perfil</label>
             <textarea
               property="profile"
+              field="textarea"
+              validate="isNotEmpty"
               rows="3"
               class="form-control"
             ></textarea>
@@ -267,24 +252,13 @@
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $("[select2]").select2();
-
-      $("[select2-tags]").select2({
-        tags: true,
-      });
-
-      $("[datepicker]").daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true,
-      });
-
-      $("[datepicker-multiple]").daterangepicker();
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 
   {% assets "form-scrips" %}
   <script type="text/javascript" src="{{ ASSET_URL }}"></script>
   {% endassets %}
+
+  <script>
+    loadLibs();
+  </script>
 </html>

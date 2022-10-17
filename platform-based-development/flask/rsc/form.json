@@ -1,27 +1,25 @@
 {
-  "skills": {
-    "tag": "skill",
-    "type": "checkbox",
-    "classParent": "form-check",
-    "classInput": "form-check-input",
-    "classLabel": "form-check-label",
-    "data": [
-      {
-        "text": "Acondicionamiento fisico",
-        "value": "Acondicionamiento fisico"
-      },
-      {
-        "text": "Creacion videos deportivos",
-        "value": "Creacion videos deportivos"
-      },
-      {
-        "text": "Pack Office",
-        "value": "Pack Office"
-      },
-      {
-        "text": "Tenis",
-        "value": "Tenis"
-      }
+  "properties": {
+    "input": {
+      "type": "text",
+      "tag": "input",
+      "value": ""
+    },
+    "datepicker-multiple": {
+      "type": "text",
+      "tag": "input",
+      "value": ""
+    },
+    "select2": {
+      "type": "",
+      "tag": "select",
+      "value": ""
+    }
+  },
+  "data": {
+    "languages": [
+      ["Ingles", "Ruso", "Japones", "Chino", "Coreano"],
+      ["Basico", "Intermedio", "Avanzado", "Fluido"]
     ]
   }
 }

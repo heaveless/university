@@ -3,55 +3,67 @@ const datasourceContent = datasource.innerHTML;
 const dataFmt = datasourceContent.replace(/&#39;/g, '"');
 const dataObject = JSON.parse(dataFmt);
 
-function createItem(data, id) {
-  const CONTAINER = document.getElementById(id);
-  CONTAINER.innerHTML = "";
+function loadLibs() {
+  $("[select2]").select2();
 
-  Array.from(data.data).forEach((item, idx) => {
-    const identify = `${data.tag}${idx}`;
-
-    const DIV = document.createElement("div");
-    DIV.classList.add(data.classParent);
-
-    const INPUT = document.createElement("input");
-    INPUT.id = identify;
-    INPUT.name = data.tag;
-    INPUT.type = data.type;
-    INPUT.value = item.value;
-    INPUT.classList.add(data.classInput);
-
-    const LABEL = document.createElement("label");
-    LABEL.htmlFor = identify;
-    LABEL.textContent = item.text;
-    LABEL.classList.add(data.classLabel);
-
-    DIV.appendChild(INPUT);
-    DIV.appendChild(LABEL);
-
-    CONTAINER.appendChild(DIV);
+  $("[select2-tags]").select2({
+    tags: true,
   });
+
+  $("[datepicker]").daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+  });
+
+  $("[datepicker-multiple]").daterangepicker();
 }
 
-function submit() {
-  const form = document.getElementById("data-form");
-  const skillElement = document.getElementById("skill-id");
-  form.onsubmit = () => {
-    let skillsData = [];
+function deleteItem(container) {
+  container.remove();
+}
 
-    const skills = document.querySelectorAll("[id*=skill]");
-    skills.forEach((e) => {
-      if (e.checked) skillsData.push(e.value);
-    });
-    skillElement.value = JSON.stringify(skillsData);
+function createItem(node, items = [], className = "-") {
+  const container = node.parentNode.parentNode.querySelector(":scope > * + *");
 
-    return true;
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("form__input-item", className);
+
+  items.forEach((item, idx) => {
+    const { type, tag, value } = dataObject.properties[item];
+    const element = document.createElement(tag);
+
+    element.type = type;
+    element.setAttribute("field", item);
+    element.setAttribute(item, value);
+    element.classList.add("form-control");
+
+    // FIX ME
+    if (item == "select2") {
+      const property = container.getAttribute("property");
+      const options = dataObject.data[property][idx];
+      options.forEach((opt) => {
+        const option = document.createElement("option");
+        option.textContent = opt;
+
+        element.appendChild(option);
+      });
+    }
+    // END FIX
+
+    wrapper.appendChild(element);
+  });
+
+  const button = document.createElement("button");
+  const properties = {
+    type: "button",
+    textContent: "-",
+    onclick: () => deleteItem(wrapper),
   };
+
+  _.assign(button, properties);
+  button.classList.add("btn", "btn-sm", "btn-danger");
+
+  wrapper.appendChild(button);
+
+  container.appendChild(wrapper);
 }
-
-function bootstrap() {
-  submit();
-
-  createItem(dataObject.skills, "skills");
-}
-
-bootstrap();
