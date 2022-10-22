@@ -51,7 +51,6 @@ function createItem(node, items = [], className = "-") {
     // END FIX
 
     wrapper.appendChild(element);
-    loadLibs();
   });
 
   const button = document.createElement("button");
@@ -67,4 +66,6 @@ function createItem(node, items = [], className = "-") {
   wrapper.appendChild(button);
 
   container.appendChild(wrapper);
+
+  loadLibs();
 }

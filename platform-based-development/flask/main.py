@@ -39,9 +39,10 @@ def curriculum(key: str):
     return render_template("curriculum.html", context=json.dumps(data.__dict__))
 
 assets.register('form-styles', Bundle('scss/form.scss', filters='pyscss', output='css/_form.css'))
-assets.register('form-scrips', Bundle('js/validate.js', 'js/utils.js', 'js/form.js', filters='jsmin', output='js/_form.js'))
+assets.register('form-scripts', Bundle('js/validate.js', 'js/utils.js', 'js/form.js', filters='jsmin', output='js/_form.js'))
 
 assets.register('curriculum-styles', Bundle('scss/curriculum.scss', filters='pyscss', output='css/_curriculum.css'))
+assets.register('curriculum-scripts', Bundle('js/curriculum.js', filters='jsmin', output='css/_curriculum.js'))
 
 if __name__ == "__main__":
     print("http://localhost:5000")
