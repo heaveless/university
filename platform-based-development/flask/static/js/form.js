@@ -125,6 +125,12 @@ function submit() {
       const [isSuccess, data] = validate(payload);
       // console.log(isSuccess, data);
 
+      axios.post("/send", data).then((res) => {
+        const { success, key } = res.data;
+        console.log(key)
+        if (success) window.location.href = `/curriculum/${key}`;
+      });
+
       return false;
     } catch (error) {
       return false;

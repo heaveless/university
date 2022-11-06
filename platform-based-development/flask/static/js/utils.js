@@ -66,4 +66,6 @@ function createItem(node, items = [], className = "-") {
   wrapper.appendChild(button);
 
   container.appendChild(wrapper);
+
+  loadLibs();
 }
